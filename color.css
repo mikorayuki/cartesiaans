@@ -1,0 +1,25 @@
+/* ===================================
+   FILE: color.css
+   Pusat Kontrol Skema Warna
+   (Cream, Putih, Hijau UINSA) - Versi 2
+=================================== */
+
+:root {
+    /* Palet Warna */
+    --color-background: #F9F6F0;     /* Cream Utama (Lebih Jelas) */
+    --color-surface: #FFFFFF;        /* Putih bersih untuk header dan kartu */
+    --color-primary: #1E5128;        /* Hijau Tua (Hijau UINSA) */
+    --color-primary-light: #2a7538;  /* Hijau untuk hover */
+    --color-accent: #EFEBE4;         /* Cream sekunder (lebih gelap) untuk footer/batas */
+    
+    /* Palet Teks */
+    --color-text-primary: #333333;   /* Abu-abu tua */
+    --color-text-secondary: #707070; /* Abu-abu sekunder */
+
+    /* Variabel Layout */
+    --font-main: 'Poppins', sans-serif;
+    --header-height: 80px;
+    --border-radius: 12px;
+    --transition-speed: 0.4s;
+    --particle-color: #A0A0A0; /* Warna partikel (abu-abu muda) */
+}

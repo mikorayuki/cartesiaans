@@ -1,0 +1,358 @@
+/* ===================================
+   FILE: style.css
+   Layout & Animasi Canggih
+=================================== */
+
+/* Import Font & File Warna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import 'color.css'; /* Memanggil variabel warna Anda */
+
+/* ========================================
+  01. BASE & PARTICLE BACKGROUND
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-background); /* Warna Cream */
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Canvas untuk Latar Belakang Partikel */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Di belakang semua konten */
+    opacity: 0.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative; /* Agar di atas canvas */
+    z-index: 2;
+}
+
+.header-padding {
+    padding-top: var(--header-height);
+}
+
+/* ========================================
+  02. HEADER (Sama seperti sebelumnya)
+======================================== */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface); /* Putih */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#main-header.scrolled {
+    height: 65px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.nav-button {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.nav-button:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+  03. ABOUT SECTION (Struktur Baru)
+======================================== */
+.about-section {
+    padding: 80px 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Kolom 1 lebih kecil */
+    gap: 50px;
+    align-items: center;
+}
+
+/* KARTU 3D INTERAKTIF */
+.about-card-container {
+    perspective: 1000px; /* Penting untuk 3D */
+}
+
+.about-card {
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-accent);
+    background: var(--color-surface);
+    /* Transisi halus untuk reset */
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+.about-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.about-content {
+    text-align: left;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.typing-container {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 25px;
+    min-height: 1.6em;
+}
+
+.typing {
+    border-right: 3px solid var(--color-primary);
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-primary); }
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+  04. SHOWCASE SECTION (Struktur Baru)
+======================================== */
+.showcase-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--color-surface); /* Latar Putih */
+    border-top: 1px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-accent);
+}
+
+.showcase-pretitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+
+.photo-container {
+    width: 100%;
+    max-width: 900px; /* Batasi lebar foto */
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Penting untuk zoom */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.photo-container img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background-color: var(--color-accent);
+    /* Animasi Hover Canggih */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.photo-container:hover img {
+    transform: scale(1.05); /* Zoom in */
+}
+
+.showcase-description {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    margin-top: 25px;
+    font-style: italic;
+}
+
+/* ========================================
+  05. GATE SECTION (Sama seperti sebelumnya)
+======================================== */
+.gate-section {
+    padding: 80px 0 100px 0;
+    text-align: center;
+}
+
+.gate-title {
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.gate-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 30px rgba(30, 81, 40, 0.3);
+    animation: pulse 2.5s infinite;
+}
+
+.cta-button .arrow-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(30, 81, 40, 0.4);
+    animation-play-state: paused;
+}
+
+.cta-button:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* ========================================
+  06. FOOTER
+======================================== */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background: var(--color-accent);
+    border-top: 1px solid #ddd;
+    position: relative; /* Agar di atas canvas */
+    z-index: 2;
+}
+
+footer a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+footer a:hover {
+    color: var(--color-primary);
+}
+
+/* ========================================
+  07. ANIMASI FADE-IN ON SCROLL
+======================================== */
+.fade-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+  08. RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 800px) {
+    /* Ubah grid "About" menjadi 1 kolom */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .about-content {
+        text-align: center;
+    }
+    .about-card {
+        max-width: 450px; /* Batasi lebar kartu di mobile */
+        margin: 0 auto;
+    }
+    .section-title, .gate-title {
+        font-size: 1.8rem;
+    }
+    .typing-container {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #main-header { height: auto; }
+    #main-header.scrolled { height: auto; }
+    .header-padding {
+        padding-top: 120px; /* Sesuaikan */
+    }
+    .cta-button {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+}
